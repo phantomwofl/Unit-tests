@@ -3,11 +3,10 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CreditAccountTests {
-    CreditAccount sut = new CreditAccount("sut",0);
+    CreditAccount sut = new CreditAccount("sut",-5000);
 
     @BeforeAll
     public static void started() {
@@ -22,11 +21,10 @@ public class CreditAccountTests {
     @Test
     public void testAddMoney() {
         //arrange
-        int ammount = 1;
-        var expected = RuntimeException.class;
+        int ammount = 1000;
 
         //assert
-        assertThrows(expected,
+        assertDoesNotThrow(
                 //act
                 () -> sut.addMoney(ammount));
     }
